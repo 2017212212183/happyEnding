@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+{% block login %}
+    <div id="myLogin"  style="position:absolute;margin-left:35%;top:120px;z-index:260;background:rgba(0,0,0,0.3);">
+    <body>
+        <!-- 登录表单 -->
+        <h2 style=" text-align:center;color: white">登陆</h2>
+        <form method="post" style="width: 330px;height: 200px;margin-left: 30px;margin-top: 20px">
+            <div class="form-group">
+                <label for="user" stype="display:inline;" autocomplete="off" >用户：</label>
+                <input type="text" class="form-control" id="user" name="user" placeholder="请输入账户" style="display:inline;width:200px;"autocomplete="off"required />
+            </div>
+            <div class="form-group">
+                <label for="password" style="display:inline;" autocomplete="off" >密码：</label>
+                <input type="password" class="form-control" id="password"  name="password" placeholder="请输入账户密码 " style="display:inline;width:200px;"autocomplete="off" required/>
+            </div>
+            <button type="submit" class="btn btn-primary" id="loginBtn" style="margin-left: 40px;margin-top: 10px;width: 210px">登录</button>
+        </form>
+    </body>
+</div>
+{% endblock %}

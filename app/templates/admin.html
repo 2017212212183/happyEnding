@@ -1,0 +1,20 @@
+<div>
+    <table border="1" cellspacing="0">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>password</th>
+            <th>isAdmin</th>
+        </tr>
+        </thead>
+        {% for ptr in user %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{ptr.email}}</td>
+                <td>{{ptr.password}}</td>
+                <td>{{ptr.isAdmin}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>

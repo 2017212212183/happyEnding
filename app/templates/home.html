@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% block Carousel %}
+         <div class="container" style="margin: 0;padding: 0;position:absolute;left:0px;top:50px;z-index:80;">
+            <!--自己定义的收容轮播的区域-->
+            <div id="myShuffArea" style="width: 1600px;height: auto">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!--轮播指标-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1" ></li>
+                        <li data-target="#myCarousel" data-slide-to="2" ></li>
+                    </ol>
+                    <!--轮播项目-->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="img-contaner" style="width: 1600px;height: 500px;overflow: hidden; transform: scale(1.1);">
+                                <img src="{{ url_for('static', filename='images/index.jpg') }}" />
+                            </div>
+                            <div class="carousel-caption" style="margin-left: -600px;margin-top: -500px">
+                                <h3>成为猿霸的第一步：学习技术！</h3>
+                                <p>描述文字!</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img-contaner" style="width: 1600px;height: 500px;overflow: hidden; transform: scale(1.1);">
+                                 <img src="{{ url_for('static', filename='images/index.jpg') }}" />
+                            </div>
+                            <div class="carousel-caption" style="margin-left: -600px;margin-top: -500px">
+                                <h3>脱掉你的格子衬衫和运动鞋</h3>
+                                <p>————致一起奋斗的程序员</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img-contaner" style="width: 1600px;height: 500px;overflow: hidden; transform: scale(1.1);">
+                                <img src="{{ url_for('static', filename='images/index.jpg') }}" />
+                            </div>
+                            <div class="carousel-caption" style="margin-left: -600px;margin-top: -500px">
+                                <h3>提高作为程序员的表达能力</h3>
+                                <p>成为猿总！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    {% endblock %}
+
+    {# 登陆表#}
+    {% block login %}
+    {% endblock %}
+     {# 注册表#}
+    {% block register %}
+    {% endblock %}
+
+    {% block bar %}
+    <div id="bar" style="position:absolute;left:100px;top:520px;z-index:200;background:white;width:1300px;height:200px;border-radius: 5px">
+        <div class="container" style="margin: 100px;margin-top: 20px">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="#goto1">
+                        <div>
+                            <img alt="img1"  class="img1" src="{{ url_for('static', filename='images/index_img1.png') }}">
+                        </div>
+                        <div>
+                            提高您的技术
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#goto2">
+                        <div style="margin-top: 10px">
+                            <img alt="img2" class="img2"  src="{{ url_for('static', filename='images/index_img2.png') }}">
+                        </div>
+                        <div>
+                            开放您的眼界
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#goto3">
+                        <div>
+                            <img alt="img3" class="img3"  src="{{ url_for('static', filename='images/index_img3.png') }}">
+                        </div>
+                        <div>
+                            丰富您的形象
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="/mainPage/about">
+                        <div>
+                            <img alt="img1" class="img1" src="{{ url_for('static', filename='images/index_img4.png') }}">
+                        </div>
+                        <div>
+                            关于我们
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        <div id="goto1" style="position: absolute;"></div>
+        <div id="goto2" style="position: absolute;margin-top: 780px"></div>
+        <div id="goto3" style="position: absolute;margin-top: 1630px"></div>
+        <div class="panel panel-primary container" style="margin-top: 100px;height:600px;box-shadow: 10px 10px 5px #888888;">
+            <div class="" style="margin-top: 30px;height: 100px;">
+                 <div class="col-md-9" style="height: 50px" > 想提高你的技术吗</div>
+                 <div  class="col-md-3" ><a href="/mainPage/technplogy"><span class="glyphicon glyphicon-list-alt" style="font-size: 20px;">了解更多</span></a></div>
+            </div>
+            <div class="panel-body" style="margin-top: 10px">
+                <div class="classlist clearfix w">
+                    {% for ptr in techitems %}
+                        <div class=" col-md-3">
+                            <div class="listconteainer">
+                                <a target="_blank" href="">
+                                    <img src={{ ptr.image }} alt="" style="width: 250px;height: 180px">
+                                    <div class="" style="width: 200px">
+                                        <p class="title">{{ ptr.title }}</p>
+                                        <span title="收藏数" class="glyphicon glyphicon-heart"></span>
+                                        <span style="margin: 0px 2px; font-size: 16px;">1</span>
+                                        <span title="评论数" class="glyphicon glyphicon-comment"></span>
+                                        <span style="margin: 0px 2px; font-size: 16px;">3</span>
+                                    </div>
+                                </a>
+                                <hr style="width: 250px;margin-left: 0px">
+                                <p>日期：</p><p>{{ ptr.modified_date }}</p>
+                                <p>作者：</p><p>{{ ptr.Author }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary container" style="margin-top: 40px;height:800px;box-shadow: 10px 10px 5px #888888;">
+            <div class="" style="margin-top: 100px;height: 100px;">
+                 <div class="col-md-9" style="height: 50px" > 想开放你的眼界吗</div>
+                 <div  class="col-md-3" ><a href="/mainPage/horizons"><span class="glyphicon glyphicon-list-alt" style="font-size: 20px;">了解更多</span></a></div>
+            </div>
+            <div class="panel-body" style="margin-top: 10px">
+                 {% for ptr in eyesitems %}
+                    <div class="row ">
+                        <div class="col-md-3"  style="margin-top: 10px">
+                            <img alt=""  class="" style="width: 200px;height: 170px" src="{{ptr.image}}">
+                        </div>
+                        <div class="col-md-8"style="margin: 0px;padding: 0px">
+                            <div>
+                                <h3 style="text-align: left;margin-top: 20px;">{{ptr.articleId}}</h3>
+                            </div>
+                            <div >
+                                <h6 style="text-align: left;margin-top: 20px;">
+                                    <a href="#" id="good" title="为你点赞"><span class="glyphicon glyphicon-thumbs-up">{{  ptr.thumbsUp }}</span></a>
+                                    <a href="#" id="good" title="为你点赞"><span class="glyphicon glyphicon-eye-open">{{ ptr.eyeOpen}}</span></a>
+                                </h6>
+                                <h5 style="text-align: left;color: darkgray">{{ptr.modified_date}}</h5>
+                            </div>
+                            <div>
+                                <h5  style="text-align: left;color: gray;margin-top: 10px;padding-top: 10px;line-height:25px;  ">{{ ptr.text }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                 {% endfor %}
+            </div>
+        </div>
+          <div class="panel panel-primary container" style="margin-top: 40px;height:800px;box-shadow: 10px 10px 5px #888888;">
+            <div class="" style="margin-top: 100px;height: 100px;">
+                 <div class="col-md-9" style="height: 50px" > 想丰富你的形象吗</div>
+                 <div  class="col-md-3" ><a href="/mainPage/looks"><span class="glyphicon glyphicon-list-alt" style="font-size: 20px;">了解更多</span></a></div>
+            </div>
+            <div class="panel-body" style="margin-top: 10px">
+                 {% for ptr in lookitems %}
+                    <div class="row">
+                        <div class="col-md-3"  style="margin-top: 10px">
+                            <img alt=""  class="" style="width: 200px;height: 170px" src="{{ptr.image}}">
+                        </div>
+                        <div class="col-md-8"style="margin: 0px;padding: 0px">
+                            <div>
+                                <h3 style="text-align: left;margin-top: 20px;">{{ptr.articleId}}</h3>
+                            </div>
+                            <div >
+                                <h6 style="text-align: left;margin-top: 20px;">
+                                    <a href="#" id="good" title="为你点赞"><span class="glyphicon glyphicon-thumbs-up">{{  ptr.thumbsUp }}</span></a>
+                                    <a href="#" id="good" title="为你点赞"><span class="glyphicon glyphicon-eye-open">{{ ptr.eyeOpen}}</span></a>
+                                </h6>
+                                <h5 style="text-align: left;color: darkgray">{{ptr.modified_date}}</h5>
+                            </div>
+                            <div>
+                                <h5  style="text-align: left;color: gray;margin-top: 10px;padding-top: 10px;line-height:25px;  ">{{ ptr.text }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                 {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% block content %}
+    {% block background %}
+        <div >
+            <img alt=""  class="img" style="height: 400px;width: 1540px" src="../static/images/userInfo.png">
+        </div>
+    {% endblock %}
+    {% block all %}
+        <div class="container">
+            <div class="container" style="line-height: 20px;position: absolute;top: 300px;left:100px;right: 100px;border-radius: 10px;background-color: white;line-height: 200px;text-align: center;box-shadow: darkgrey 10px 10px 30px 10px;">
+                <div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <img  src="../static/images/head.jpeg" alt="" style="width: 300px;height: 300px">
+                    </div>
+                    <div class="col-md-6 container" style="padding: 0px;margin: 0px">
+                        {% block userContent %}
+                            <div class="row" style="line-height: 20px;text-align: left;margin-top: 40px;font-size: 30px"> <p>用户：{{ user.email }}</p></div>
+                            <div class="row" style="line-height: 20px;text-align: left;margin-top: 40px;font-size: 20px"> <p>最近登陆：{{ user.date }}</p></div>
+                            <div class="row form-group" style="margin-top:30px;line-height: 20px;">
+                                <p for="name"  style="line-height: 20px;text-align: left;font-size: 20px">个性签名</p>
+                                <textarea class="form-control" rows="3">{{ user.description }}</textarea>
+                                <button type="button" class="btn btn-primary" style="line-height: 20px;margin-top: 10px">修改</button>
+                            </div>
+                        <hr>
+                        {% endblock %}
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="col-md-4 right">
+                    <button type="button" class="btn btn-primary">修改</button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

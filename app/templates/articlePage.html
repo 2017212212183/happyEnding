@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'pageBg.html' ignore missing %}
+    {% block all %}
+        <div class="container">
+             <div class="row" style="position: absolute;top: 300px;left:100px;right: 100px;border-radius: 10px;background-color: white;line-height: 200px;text-align: center;box-shadow: darkgrey 10px 10px 30px 10px;">
+                 <div class="col-md-8">
+                     <div class="col-md-12">
+                         {{ article.text|markdown|safe }}
+                     </div>
+                 </div>
+                 <div class="col-md-4" style="line-height: 20px;margin-top: 30px">
+                     <img class="img-circle image-responsive" src="{{image}}" alt="头像" style="width: 100px;height: 100px;"/>
+                     <h4>作者:{{ article.Author }}</h4>
+                     <h4>时间:{{ article.modified_date }}</h4>
+                     <h4>点赞数:{{ article.thumbsUp }}</h4>
+                     <h4>浏览量:{{ article.eyeOpen }}</h4>
+                 </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

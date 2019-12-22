@@ -1,0 +1,84 @@
+{% extends 'home.html' %}
+{% block content %}
+    {% include 'pageBg.html' ignore missing %}
+    {% block all %}
+        <div class="container">
+             <div class="row" style="position: absolute;top: 300px;left:100px;right: 100px;border-radius: 10px;background-color: white;line-height: 200px;text-align: center;box-shadow: darkgrey 10px 10px 30px 10px;">
+                 <div class="col-md-8">
+                     {% for ptr in items %}
+                            <div class="row">
+                                <div class="col-md-4" >
+                                    <img alt=""  class="" style="width: 200px;height: 170px" src="{{ptr.image}}">
+                                </div>
+                                <div class="col-md-8"style="margin: 0px;padding: 0px">
+
+                                        <div>
+                                            <a href="{{ url_for('scanArticle',id=ptr.articleId)}}" style="height: 30px"><h3 style="text-align: left;margin-top: 20px;">{{ptr.title}}</h3></a>
+                                        </div>
+                                        <div >
+                                            <h6 style="text-align: left;margin-top: 20px;">
+                                                <a href="#" id="good" title="为你点赞"><span class="glyphicon glyphicon-thumbs-up">{{  ptr.thumbsUp }}</span></a>
+                                                <a href="#" id="good" title="为你点赞"><span class="glyphicon glyphicon-eye-open">{{ ptr.eyeOpen}}</span></a>
+                                            </h6>
+                                            <h5 style="text-align: left;color: darkgray">{{ptr.modified_date}}</h5>
+                                        </div>
+                                        <div>
+                                            <h5  style="text-align: left;color: gray;margin-top: 10px;padding-top: 10px;line-height:25px;  ">{{ ptr.text }}</h5>
+                                        </div>
+                                        <div class="col-md-12" style="margin-top: 0px;line-height: 0px">
+                                            <div class="col-md-3 pull-right" style="line-height: 50px;margin-top: 0px;margin-left: 20px">
+                                                <div class="col-md-6">
+                                                     <form class="inline-form" method="post" action="{{ url_for('deleteId', id=ptr.articleId) }}">
+                                                        <input class="btn btn-primary" type="submit" name="deleteId" value="删除" onclick="return confirm('确定删除这篇文章吗')">
+                                                     </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form class="inline-form" method="post" action="{{ url_for('editId', id=ptr.articleId) }}">
+                                                        <input class="btn btn-primary" type="submit" name="editId" value="编辑">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                         </div>
+                                </div>
+                            </div>
+                    {% endfor %}
+                 </div>
+                 <div class="col-md-4">
+                     <div class="col-sm-8" id="searchRow" style="margin-top: 40px;margin-left: 50px;height: 30px">
+                         <form action="keySearch" method="post" >
+                             <div class="input-group">
+                                <input type="text" class="form-control" id="keySearch" name="keySearch">
+                                <span class="input-group-addon"><button type="submit" ><span class="glyphicon glyphicon-search"></span>搜索</button></span>
+                             </div>
+                         </form>
+                     </div>
+                     <hr class="col-sm-10" style="margin-top: 20px;margin-left: 40px">
+                     <div class="col-sm-10" style="line-height: 40px;margin-left: 10px;">
+                        <div  class="col-sm-6"><a href="" id="latestArticle" style="font-size: 16px;"><span class="glyphicon glyphicon-map-marker" style="font-size: 25px;"></span>最新文章</a></div>
+                        <div  class="col-sm-12" id="latest_Article_List">
+                        <ul>
+                            {% for ptr in article1 %}
+                            <li>
+                                <a href="">{{ ptr.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        </div>
+                     </div>
+                     <div class="col-sm-10" style="line-height: 40px;margin-left: 10px">
+                        <a href=""  class="col-sm-6" id="hotestArticle"  style="font-size: 16px;"><span class="glyphicon glyphicon-map-marker"  style="font-size: 25px;"></span>热门文章</a>
+                        <div  class="col-sm-12" id="latest_Article_List">
+                        <ul>
+                            {% for ptr in article2 %}
+                            <li>
+                                <a href="">{{ ptr.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
